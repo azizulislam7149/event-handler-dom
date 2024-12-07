@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comment box</title>
+</head>
+<body>
+    <h1>Please your comment</h1>
+    <div id="comment-container">
+       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dignissimos quisquam suscipit ducimus reiciendis fugiat, libero deleniti sit atque voluptatibus veritatis at assumenda quam consequatur obcaecati vel quod velit facilis?</p>
+       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dignissimos quisquam suscipit ducimus reiciendis fugiat, libero deleniti sit atque voluptatibus veritatis at assumenda quam consequatur obcaecati vel quod velit facilis?</p>
+       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dignissimos quisquam suscipit ducimus reiciendis fugiat, libero deleniti sit atque voluptatibus veritatis at assumenda quam consequatur obcaecati vel quod velit facilis?</p>
+    </div>
+    <div>
+       <textarea name="" id="comment-box" cols="60" rows="10"></textarea>
+    </div>
+    <button id="btn-post">post</button>
+
+    <h1 id="secret-info">my secret infomation</h1>
+    <input id="input-field" type="text" placeholder="please type delete">
+    <button id="delete" disabled>delete</button>
+    <script>
+        document.getElementById('btn-post').addEventListener('click',function(){
+            const addComment = document.getElementById('comment-box');
+            const newComment  = addComment.value;
+            const commentContainer = document.getElementById('comment-container');
+            const p = document.createElement('p');
+            p.innerText = newComment;
+            commentContainer.appendChild(p);
+            addComment.value = '';    
+
+        })
+
+        document.getElementById('input-field').addEventListener('keyup',function(event){
+                const text = event.target.value;
+               const deleteBtn = document.getElementById('delete');
+               if(text === 'delete'){
+                deleteBtn.removeAttribute('disabled');
+               }
+               else{
+                deleteBtn.setAttribute('disabled',true);
+               }
+            })
+        document.getElementById('delete').addEventListener('click',function(){
+            const textField = document.getElementById('secret-info');
+            textField.style.display ='none';
+
+        })
+    </script>
+</body>
+</html>
